@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserir Imagem com Clique</title>
     <style>
@@ -22,14 +22,13 @@
     <div id="imagem-container"></div>
     <label>
         <img src="anime.gif" width="50px" onclick="MudarImagemAnime()" id="imagem_anime">
-        <img src="among-us.gif" width="50px" onclick="MudarImagemSussy()" id="imagem_anime">
+        <img src="among-us.gif" width="50px" onclick="MudarImagemSussy()" id="imagem_sussy">
     </label>
     <div id="div_das_imagens" style="border: 2px solid black; width: 1000px; height: 1000px;"></div>
-    
 
     <script>
-       var ImagemAtual = "";
-    
+        var ImagemAtual = "";
+
         function inserirImagem(event) {
             var DivDasImagens = document.getElementById("div_das_imagens");
             if (DivDasImagens.contains(event.target)) {
@@ -46,23 +45,27 @@
                 novaImagem.style.width = "100px"; // Defina a largura desejada
 
                 // Calcule a posição centralizada da imagem em relação ao mouse
-                var offsetX = novaImagem.width / 2;
-                var offsetY = novaImagem.height / 2;
+                var offsetX = novaImagem.width / 5.5;
+                var offsetY = novaImagem.height / 5.5;
                 novaImagem.style.left = (x - offsetX) + "px";
                 novaImagem.style.top = (y - offsetY) + "px";
 
                 // Adicione a nova imagem à div de contêiner
                 var imagemContainer = document.getElementById("imagem-container");
-                // imagemContainer.innerHTML = ""; // Limpa qualquer imagem anterior
                 imagemContainer.appendChild(novaImagem);
+
+                // Adicionar um evento de clique para apagar a imagem
+                novaImagem.addEventListener('click', function () {
+                    imagemContainer.removeChild(novaImagem);
+                });
             }
         }
 
-        function MudarImagemAnime(){
+        function MudarImagemAnime() {
             ImagemAtual = "anime.gif";
         }
 
-        function MudarImagemSussy(){
+        function MudarImagemSussy() {
             ImagemAtual = "among-us.gif";
         }
     </script>
