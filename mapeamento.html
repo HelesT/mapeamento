@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir Imagem</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #canvas-container img {
+            position: absolute;
+            display: none;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <button id="button1">Inserir Imagem 1</button>
+    <button id="button2">Inserir Imagem 2</button>
+
+    <script>
+        const canvasContainer = document.getElementById('canvas-container');
+        const button1 = document.getElementById('button1');
+        const button2 = document.getElementById('button2');
+
+        let currentImage = null;
+
+        button1.addEventListener('click', () => {
+            if (currentImage) {
+                currentImage.style.display = 'none';
+            }
+
+            currentImage = new Image();
+            currentImage.src = 'caminho_da_imagem1.jpg';
+            currentImage.style.position = 'absolute';
+
+            canvasContainer.appendChild(currentImage);
+        });
+
+        button2.addEventListener('click', () => {
+            if (currentImage) {
+                currentImage.style.display = 'none';
+            }
+
+            currentImage = new Image();
+            currentImage.src = 'caminho_da_imagem2.jpg';
+            currentImage.style.position = 'absolute';
+
+            canvasContainer.appendChild(currentImage);
+        });
+
+        canvasContainer.addEventListener('click', (event) => {
+            if (currentImage) {
+                currentImage.style.left = event.clientX + 'px';
+                currentImage.style.top = event.clientY + 'px';
+                currentImage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
