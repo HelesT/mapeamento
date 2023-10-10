@@ -15,7 +15,6 @@
 
         #imagem-container {
             position: relative;
-            width: 200px;
         }
     </style>
 </head>
@@ -42,6 +41,9 @@
                 var novaImagem = document.createElement("img");
                 novaImagem.src = ImagemAtual; // Substitua pelo caminho da imagem que você deseja inserir
                 novaImagem.style.position = "absolute";
+
+                // Defina o tamanho da imagem
+                novaImagem.style.width = "100px"; // Defina a largura desejada
 
                 // Calcule a posição centralizada da imagem em relação ao mouse
                 var offsetX = novaImagem.width / 2;
